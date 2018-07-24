@@ -1,0 +1,164 @@
+{{!-- modal --}}
+
+<div class="modal" tabindex="-1" role="dialog" id="makeSnippetModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content cardpost">
+            <div class="modal-header">
+                <h5 class="modal-title">Post a <span class="logo">Snippet </span></h5>
+                <button type="button" class="close buttonstyle" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="clearfix mb-4">
+                    <div class="form-group">
+                        <label for="example-title">Title</label>
+                        <input type="text" id="title" class="form-control" aria-describedby="example-text" placeholder="Title" style="height:50px" maxlength="50"></input>
+                    </div>
+                    <div class="form-group">
+                        <label for="example-code">Code</label>
+                        <textarea type="text" id="codeBlock" class="form-control" aria-describedby="example-text" placeholder="Enter Code" maxlength="500"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="example-description">Description</label>
+                        <textarea class="form-control" id="description" aria-describedby="example-description" placeholder="Enter Description" maxlength="255"></textarea>
+                    </div>
+                    <div class="dropdown">
+                        <label for="languageOptions">Code Language</label>
+                        <select class="form-control required" id="languageOptions" style="width: 100%">
+                            <option value="">Select Language</option>
+                            <option value="java">Java</option>
+                            <option value="cpp">C++</option>
+                            <option value="python">Python</option>
+                            <option value="csharp">C#</option>
+                            <option value="javascript">JavaScript</option>
+                            <option value="css">CSS</option>
+                            <option value="json">JSON</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="submitSnippet" class="btn btn-light float-right buttonstyle">Submit</button>
+
+                <button id="close" type="button" class="btn btn-warning buttonstyle" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{{!-- end modal --}}
+
+<div class="container snippetsContainer">
+    {{!-- Header --}}
+    <div class="containerHeader"><h2 class="trending">{{header}}</h2></div>
+    <div class="row">
+
+        {{!-- floating Sidebar --}}
+        <div class="col-md-4 side">
+            <div class="sidebar cardbody">
+
+                {{!-- Insert Logged in user name --}}
+                <h3 class="username trending">Welcome: {{currentUser.username}} !</h3>
+
+                <button id="makeSnippet" type="button" class="btn btn-info btn-lg buttonstyle" data-toggle="modal" data-target="#makeSnippetModal">Post a snippet!</button>
+                <br>
+                <br> {{!-- Show Trending languages --}}
+                <div>
+                    <h4 class="trending">Trending Languages:</h4>
+                    {{#each trending}}
+                    <h5>
+                        <em>
+                            <a href="/snippets/{{this}}"> {{this}} </a>
+                        </em>
+                    </h5>
+                    <hr> {{/each}}
+                </div>
+
+                {{!-- Dropdown menu all Languages--}}
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle buttonstyle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i class="fas fa-code"></i> Languages
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <button class="dropdown-item langSelect" value="java" type="button">Java</button>
+                        <button class="dropdown-item langSelect" value="cpp" type="button">C++</button>
+                        <button class="dropdown-item langSelect" value="python" type="button">Python</button>
+                        <button class="dropdown-item langSelect" value="csharp" type="button">C#</button>
+                        <button class="dropdown-item langSelect" value="javascript" type="button">Javascript</button>
+                        <button class="dropdown-item langSelect" value="css" type="button">CSS</button>
+                        <button class="dropdown-item langSelect" value="json" type="button">JSON</button>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+        {{!-- Snippet Cards --}}
+        <br>
+        <div class="col-md-8 snippets">
+            {{#each snippets}}
+            <div class="card cardbody">
+                <div class="card-body ">
+                    <h5 class="card-title trending">
+                        {{this.title}}
+                    
+
+                    {{!-- Manage button --}}
+                    {{#if (selfPost this.UserId @root.currentUser.id)}}
+                        <div class="dropdown" style="float: right">
+                            <button class="btn btn-outline-danger dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Manage
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <button class="dropdown-item snipDelete" value="{{this.id}}">Delete</button>
+                                {{!-- <button class="dropdown-item" href="#">Edit</button> --}}
+                            </div>
+                        </div>
+                    {{/if}}
+                    </h5>
+
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        <a href="/users/{{this.User.username}}"> {{this.User.username}}</a>
+                    </h6>
+
+                    
+
+                    <pre><code class="language-{{language}} codeBlock">{{codeBlock}}</code></pre>
+
+                    <p class="card-text text-muted">Language:
+                        <a href="/snippets/{{language}}"> {{language}} </a>
+                    </p>
+                    <p class="card-text" id="snippet-description">Description: {{description}}</p>
+
+                    <hr>
+
+                    <form class="commentForm">
+                        <div class="form-group commentFormText">
+                            <label for="commentText">Comment</label>
+                            <input type="text" class="form-control commentText" name="comment" maxlength="255">
+                        </div>
+                        <button class="btn btn-warning submitComment buttonstyle" data-id={{this.id}}>Comment</button>
+                    </form>
+
+                    <br>
+                    <div class="comments" id={{this.id}}>
+
+                        {{!-- JSON rendered on load --}} {{#each this.Comments}}
+                        <p>{{comment}} - -
+                            <a href="/users/{{username}}"> {{username}}</a>
+                        </p>
+                        {{/each}} {{!-- New comments will append here --}}
+
+                    </div>
+                </div>
+
+            </div>
+            {{/each}}
+
+        </div>
+    </div>
+
+</div>
