@@ -4,7 +4,7 @@
 
 Snippets is an application that allows users to have a space to post short snippets of cool code in different programming languages.
 
-![Snippets Main Screen](/public/images/snippets_main.jpg)
+![Snippets Main Screen](/public/images/Snippets_main.jpg)
 
 Snippets was created to provide users with a platform with which they can:
 * Engage in sharing cool code snippets
