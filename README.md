@@ -12,7 +12,12 @@ Snippets was created to provide users with a platform with which they can:
 * Comment the posts of other members
 
 
-In order to share on Snippets, you have to create an account and become a member .   You can sign up at: **_https://fathomless-garden-19281.herokuapp.com/._**
+In order to share on Snippets, you can create an account and become a member or can use the guest account:
+
+* Username:   **_guest_**
+* Password:    **_quest_**
+
+  You can sign up at: **_https://pacific-everglades-43020.herokuapp.com/._**
 
 ![Snippets log Screen](/public/images/snippets_signup.jpg)
 
@@ -26,7 +31,7 @@ Once you sign up, you can use the floating menu to post snippets, look at trendi
 
 
 ### Web Url for Snippets:
-**_https://fathomless-garden-19281.herokuapp.com/._**
+**_https://pacific-everglades-43020.herokuapp.com/._**
 
 ### Git Hub Repository:
 

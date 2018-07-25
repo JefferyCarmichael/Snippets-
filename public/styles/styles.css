@@ -37,14 +37,14 @@ body {
 } */
 .text {
   text-align: center;
-  color: rgb(202, 144, 58);
+  color: #cfa76bf1;
 }
 .title {
   color: white;
 }
 
 #comments {
-  color: rgb(202, 144, 58);
+  color: rgb#cfa76bf1;
   width: 80%;
   border-radius: 25px;
 }
@@ -80,7 +80,7 @@ body {
   overflow-y: scroll;
   overflow-x: hidden;
 }
-
+/* Footer */
 #bottom {
   margin-top: 50px;
   height: 40px;
@@ -114,13 +114,13 @@ box-shadow: 2px 2px 10px 5px rgba(0, 0, 0, 0.61);
 #bar{
   color:white;
   font-size: 20px;
-  text-shadow: 2px 2px 10px black;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.767);
 }
 .navbar-brand{
   font-size:36px;
- line-height: 46px;
+ line-height: 36px;
   font-family: 'Gugi', cursive;
-  text-shadow: 1px 1px 10px black;
+  text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.705);
 }
 
 .navbar{
@@ -192,12 +192,18 @@ html {
 .buttonstyle{
   box-shadow: 2px 2px 5px 3px  rgba(46, 45, 45, 0.747);
   font-weight: bold;
-   text-shadow: 1px 1px 3px rgba(70, 68, 68, 0.733);
+   text-shadow: 1px 1px 3px rgba(70, 68, 68, 0.637);
 }
 
+submitComment{
+  background-color: #dbb782e3 !important; 
+}
+
+
+
 a {
-  color: #fe9800;
-  text-shadow: 2px 2px 1px black;
+  color: #cfa76bf1;
+  text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.767);
 }
 
 /* header */
@@ -214,10 +220,10 @@ a {
 }
 
 #tag {
-  margin-top: 20px;
+  margin-top: 13px;
   color: whitesmoke;
   font-style: italic;
-  text-shadow: 2px 2px 1px black;
+  text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.61);
 }
 
 .snippetsContainer {
