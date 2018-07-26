@@ -124,7 +124,7 @@ box-shadow: 2px 2px 10px 5px rgba(0, 0, 0, 0.61);
 }
 
 .navbar{
-  background-color: rgb(72, 99, 121) !important;
+  background-color:rgb(99, 139, 170) !important;
   position: fixed;
   left: 0;
   right: 0;
@@ -137,7 +137,7 @@ box-shadow: 2px 2px 10px 5px rgba(0, 0, 0, 0.61);
 #bottom{
   margin-top: 80px;
   height: 40px;
-  background-color:  rgb(72, 99, 121);
+  background-color:  rgb(99, 139, 170);
   position: fixed;
   left: 0;
   right: 0;
@@ -174,7 +174,7 @@ html {
 }
 /* Snippet Cards, Snippet Post Button*/
 .cardbody{
-  background-color: rgba(50, 97, 129, 0.589);
+  background-color: rgba(78, 134, 172, 0.589);
   box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.61);
 }
 /* Post a Snippets Card */
@@ -232,4 +232,10 @@ a {
 
 ::-webkit-scrollbar { 
   display: none; 
+}
+
+#git{
+  font-size: 26px;
+  padding-top: 6px;
+  padding-left: 90%;
 }
